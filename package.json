@@ -1,0 +1,40 @@
+{
+  "name": "tams-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "unit": "jest --config test/unit/jest.conf.js --coverage",
+    "e2e": "node test/e2e/runner.js",
+    "test": "npm run unit && npm run e2e",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@fullcalendar/daygrid": "^5.3.0",
+    "@fullcalendar/interaction": "^5.3.0",
+    "@fullcalendar/list": "^5.3.0",
+    "@fullcalendar/timegrid": "^5.3.0",
+    "@fullcalendar/vue": "^5.3.0",
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "echarts": "^4.8.0",
+    "element-ui": "^2.15.3",
+    "js-cookie": "^2.2.1",
+    "moment": "^2.27.0",
+    "vue": "^2.6.11",
+    "vue-axios": "^3.2.4",
+    "vue-cookies": "^1.7.4",
+    "vue-particles": "^1.0.9",
+    "vue-router": "^3.4.3",
+    "vuex": "^3.4.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-router": "~4.4.0",
+    "@vue/cli-plugin-vuex": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "vue-cli-plugin-element": "^1.0.1",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
