@@ -25,8 +25,9 @@
           </el-form>
         </el-col>
         <el-col :span="4">
-          <el-button type="primary" size="small" style="float: right" @click="exportCourseSchedulingVisible=true">导出</el-button>
-          <el-button type="primary" size="small" style="float: right; margin-right: 10px;" @click="saveBatchCourseSchedulingVisible=true">排课</el-button>
+          <el-button type="primary" size="small" style="float: inside" @click="exportCourseSchedulingVisible=true">导出</el-button>
+          <el-button type="primary" size="small" style="float: left; margin-right: 10px;" @click="saveBatchCourseSchedulingVisible=true">排课</el-button>
+          <el-button type="primary" size="small" style="float: right; margin-right: 10px;" @click="logout">退出</el-button>
         </el-col>
       </el-row>
       <FullCalendar ref="fullCalendar" :options="calendarOptions"></FullCalendar>
@@ -228,6 +229,33 @@ export default {
     },
     datesSet (info) {
       this.search()
+    },
+    // 退出事件
+    logout() {
+      this.$confirm('确定退出系统?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'info'
+      }).then(() => {
+        // this.$store.dispatch('/FedLogOut')
+        this.$store.dispatch('FedLogOut')
+        // this.$store.commit('SET_PERMS', '')
+        this.$message({
+            type: 'success',
+            message: '退出成功!'
+          },
+          this.$router.push('/login')
+          //window.localStorage.clear()
+        )
+        setTimeout(() => {
+          location.reload() // 强制刷新
+        }, 1000000)
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消退出'
+        })
+      })
     },
     dayHeaderContent (info) {
       if (info.view.type === 'dayGridMonth') {
