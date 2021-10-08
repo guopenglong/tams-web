@@ -17,12 +17,14 @@
       :clickEffect="true"
       clickMode="push"
     ></vue-particles>
+
     <el-form ref="form" :model="form" label-width="80px" class="login-form" labelPosition='left'>
-      <h2 class="login-title">实验室排课系统</h2>
-      <el-form-item label="手机/邮箱">
+      <div><img :src="img1"></div>
+      <h2 class="login-title" style="font-family: AppleGothic"><b><i>河南科技大学软件学院-实验排课系统</i></b></h2>
+      <el-form-item label="用户名：">
         <el-input v-model="form.name"></el-input>
       </el-form-item>
-      <el-form-item label="密码">
+      <el-form-item label="密码：">
         <el-input type="password" v-model="form.password"></el-input>
       </el-form-item>
 
@@ -36,10 +38,11 @@
 
 <script>
   import axios from 'axios'
-
+  import pic1 from '../../assets/rjxy.png'
   export default {
     data() {
       return {
+        img1: pic1,
         userInfo: {
           name: ''
         },

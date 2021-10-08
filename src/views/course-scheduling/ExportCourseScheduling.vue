@@ -28,6 +28,12 @@
           </el-option>
         </el-select>
       </el-form-item>
+      <el-form-item label="指定老师" prop="teacherId">
+        <el-select :clearable="true" v-model="currentTeacher" value-key="id" class="form-item">
+          <el-option v-for="item in teacherData" :key="item.id" :label="item.name" :value="item">
+          </el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item label="标题" prop="title">
         <el-input v-model="form.title" class="form-item"></el-input>
       </el-form-item>
@@ -59,6 +65,8 @@ export default {
       form: {},
       classroomData: [],
       currentClassroom: {},
+      teacherData: [],
+      currentTeacher:{},
       pickerOptions: {
         firstDayOfWeek: 1
       },
@@ -77,10 +85,16 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['GetClassroomRefList']),
+    ...mapActions(['GetClassroomRefList','GetTeacherRefList']),
     init () {
       this.$set(this.form, 'sheetNamingType', 1)
       this.$set(this.form, 'isShowWeek', 1)
+      this.GetTeacherRefList().then(res =>{
+        if (res){
+          this.teacherData =res
+        }
+      }).catch(() =>{
+      }),
       this.GetClassroomRefList().then(res => {
         if (res) {
           this.classroomData = res
@@ -92,7 +106,9 @@ export default {
       this.$refs.form.resetFields()
       this.form = {}
       this.classroomData = []
+      this.teacherData = []
       this.currentClassroom = {}
+      this.currentTeacher = {}
     },
     handleClose (done) {
       this.resetData()
@@ -116,6 +132,10 @@ export default {
           if (this.currentClassroom && this.currentClassroom.id) {
             url += '&classroomId=' + this.currentClassroom.id
             url += '&classroomName=' + this.currentClassroom.name
+          }
+          if (this.currentTeacher && this.currentTeacher.id) {
+            url += '&teacherId=' + this.currentTeacher.id
+            url += '&teacherName=' + this.currentTeacher.name
           }
           if (this.form.title) {
             url += '&title=' + this.form.title

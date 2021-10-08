@@ -11,16 +11,16 @@
       <el-form-item label="用户名" prop="username" required=true>
         <el-input v-model="ruleForm.username"></el-input>
       </el-form-item>
-      <el-form-item label="班级" prop="region" required=true>
-        <el-select v-model="ruleForm.region" placeholder="请选择班级">
-          <el-option label="1801" value="1801-class"></el-option>
-          <el-option label="1802" value="1802-class"></el-option>
-          <el-option label="1803" value="1803-class"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="手机号/邮箱" prop="account" required=true>
-        <el-input v-model="ruleForm.account"></el-input>
-      </el-form-item>
+<!--      <el-form-item label="班级" prop="region" required=true>-->
+<!--        <el-select v-model="ruleForm.region" placeholder="请选择班级">-->
+<!--          <el-option label="1801" value="1801-class"></el-option>-->
+<!--          <el-option label="1802" value="1802-class"></el-option>-->
+<!--          <el-option label="1803" value="1803-class"></el-option>-->
+<!--        </el-select>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="手机号/邮箱" prop="account" required=true>-->
+<!--        <el-input v-model="ruleForm.account"></el-input>-->
+<!--      </el-form-item>-->
       <el-form-item label="密码" prop="password" required=true>
         <el-input type="password" v-model="ruleForm.password"></el-input>
       </el-form-item>
@@ -99,7 +99,7 @@ export default {
 <style>
 
 .login-form {
-  width: 350px;
+  width: 480px;
   margin: 160px auto; /* 上下间距160px，左右自动居中*/
   background-color: rgb(255, 255, 255, 0.8); /* 透明背景色 */
   padding: 30px;
