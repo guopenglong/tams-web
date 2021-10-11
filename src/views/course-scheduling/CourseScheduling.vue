@@ -244,6 +244,7 @@ export default {
             type: 'success',
             message: '退出成功!'
           },
+          window.localStorage.clear(),
           this.$router.push('/login')
           //window.localStorage.clear()
         )

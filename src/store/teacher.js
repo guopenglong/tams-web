@@ -21,7 +21,20 @@ const teacher = {
       return new Promise((resolve, reject) => {
         Api.getTeacherRefList()
           .then(res => {
-            resolve(res.data)
+            if(localStorage.getItem('username') === 'admin') {
+              resolve(res.data)
+            } else {
+              console.log('name====', localStorage.getItem('username'))
+              let teacherList = []
+              for(let i=0; i<res.data.length; i++) {
+                if(res.data[i].name === localStorage.getItem('username')) {
+                  console.log('000000')
+                  teacherList.push(res.data[i])
+                }
+              }
+              console.log('teacherList===', teacherList)
+              resolve(teacherList)
+            }
           })
           .catch(err => {
             reject(err)

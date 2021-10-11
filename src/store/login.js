@@ -6,7 +6,7 @@ const login = {
   mutations: {
   },
   actions: {
-    OnLogin ({ commit }, username, password) {
+    commit ({ commit }, username, password) {
       return new Promise((resolve, reject) => {
         Api.OnLogin(username, password)
           .then(res => {

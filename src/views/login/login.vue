@@ -66,12 +66,16 @@
                   _this.userToken = response.data.token;
                   const userInfo = {
                     name: _this.form.name,
-                    icon: 'data'
+                    icon: 'data',
+                    token: _this.userToken
                   }
+                  localStorage.setItem('username',_this.form.name)
+                  localStorage.setItem('token', _this.userToken)
                   _this.$store.commit('setUserInfo', userInfo)
                   _this.$store.commit('settoken', _this.userToken)
                   _this.$router.push('/main')
                   alert('登陆成功')
+                  console.log(localStorage.getItem('username'))
                 } else {
                   alert('登录失败')
                 }
