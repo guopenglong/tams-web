@@ -11,8 +11,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isLogin :''
   },
   mutations: {
+    isLogin(state,msg){
+      state.isLogin = msg;
+      localStorage.setItem('isLogin',msg)
+    }
   },
   actions: {
   },

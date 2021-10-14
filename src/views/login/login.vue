@@ -39,6 +39,7 @@
 <script>
   import axios from 'axios'
   import pic1 from '../../assets/rjxy.png'
+  import store from "@/router/store";
   export default {
     data() {
       return {
@@ -61,23 +62,20 @@
             if (valid) {
               const _this = this
               axios.get('http://localhost:12010/login', {params: _this.form}).then(function (response) {
-                console.log("===========" + JSON.stringify(response.data))
                 if (response.data != null && response.data != "") {
                   _this.userToken = response.data.token;
-                  const userInfo = {
-                    name: _this.form.name,
-                    icon: 'data',
-                    token: _this.userToken
-                  }
                   localStorage.setItem('username',_this.form.name)
                   localStorage.setItem('token', _this.userToken)
-                  _this.$store.commit('setUserInfo', userInfo)
-                  _this.$store.commit('settoken', _this.userToken)
                   _this.$router.push('/main')
-                  alert('登陆成功')
-                  console.log(localStorage.getItem('username'))
+                  _this.$message({
+                    type: 'success',
+                    message: '登陆成功!'
+                  })
                 } else {
-                  alert('登录失败')
+                  _this.$message({
+                    type: 'success',
+                    message: '登陆失败!'
+                  })
                 }
               })
             } else {
@@ -113,22 +111,6 @@
         }
       }
     },
-    handleSubmit() {
-      this.$refs.ruleForm.validate((valid) => {
-        if (valid) {
-          const _this = this
-          axios.get('http://localhost:12010/login', {params: _this.ruleForm}).then(function (response) {
-            if (response.data != null) {
-              localStorage.setItem('access-admin', JSON.stringify(response.data))
-              _this.$router.replace({path: '/'})
-            }
-          })
-        } else {
-          console.log('error submit!')
-          return false
-        }
-      })
-    }
   }
 
 </script>

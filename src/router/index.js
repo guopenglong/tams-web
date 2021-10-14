@@ -14,18 +14,18 @@ const routes = [
     path: '/login',
     name: 'login', // 路由名称
     component: Login, // 组件对象
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: false }
   },
   {
     path: '/register',
     name: 'register',
     component: Register,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: false }
   },
   {
     path: '/main',
     name: '/main',
-    meta: { requiresAuth: false },
+    meta: { requiresAuth: true },
     component: Main,
     redirect: '/course-scheduling',
     children: [
@@ -39,19 +39,28 @@ const routes = [
       },
       {
         path: '/classroom',
-        component: () => import('@/views/classroom/Classroom.vue')
+        component: () => import('@/views/classroom/Classroom.vue'),
+        meta: {requireAuth: true}
       },
       {
         path: '/course',
-        component: () => import('@/views/course/Course.vue')
+        component: () => import('@/views/course/Course.vue'),
+        meta: {requireAuth: true}
       },
       {
         path: '/teacher',
-        component: () => import('@/views/teacher/Teacher.vue')
+        component: () => import('@/views/teacher/Teacher.vue'),
+
+        meta: {requireAuth: true}
       },
       {
         path: '/report',
         component: () => import('@/views/report/Report.vue')
+      },
+      {
+        path: '/report',
+        component: () => import('@/views/report/Report.vue'),
+        meta: {requireAuth: true}
       }
     ]
   }

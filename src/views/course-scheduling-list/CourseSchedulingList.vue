@@ -76,7 +76,7 @@ export default {
       data: [],
       classroomData: [],
       courseData: [],
-      teacherData: [],
+        teacherData: [],
       params: {},
       idList: [],
       datePickerOptions: {

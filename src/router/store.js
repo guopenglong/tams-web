@@ -7,15 +7,16 @@ export default new Vuex.Store({
   // 变量存储库
   state: {
     // 存储token
+    uuids:'admin',
     token: '',
     userInfo: ''
   },
   // 通过同步的方法存储
   mutations: {
     // 设置vuex的token
-    settoken (state, token) {
+    setToken (state, token) {
       state.token = token
-      localStorage.token = token // 同步存储token至localStorage
+      localStorage.tokens = token // 同步存储token至localStorage
     },
     // 设置vuex的token
     setUserInfo (state, userInfo) {
@@ -37,7 +38,15 @@ export default new Vuex.Store({
         state.userInfo = localStorage.getItem('userInfo')
       }
       return JSON.parse(state.userInfo)
-    }
+    },
+    Roles({ commit }, newrouter){
+      return new Promise((resolve, reject) => {
+        commit('SET_NEWROUER',newrouter); //存储最新路由
+        resolve(newrouter);
+      }).catch(error => {
+        reject(error);
+      });
+    },
   },
   // 异步的方法存储，需要警告mutations
   actions: {
